@@ -5,7 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-compatible" content="ie=edge">
     <title>ChatBot</title>
-    <script defer src="http://localhost:3000/socket.io/socket.io.js"></script>
+    <script defer src="http://localhost:3000/socket.io/socket.io.js">
+        console.log(rooms);
+    </script>
     <script defer src="script.js"></script>
 </head>
 <body>
@@ -14,10 +16,10 @@
             <div><%= room %></div>
             <a href="/<%= room %>">Join</a>
         <% }) %>
-        <form action="/room" method="POST">
-            <input name="room" type="text" required>
-            <button type="submit">Create Room!</button>
-        </form>
     </div>
+    <form action="/room" method="POST">
+        <input id="room-name" name="room" type="text" required>
+        <button type="submit">Create Room!</button>
+    </form>
 </body>
 </html>
