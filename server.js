@@ -55,6 +55,11 @@ io.on('connection', socket => {
         getUserRoom(socket).forEach(room => {
             socket.to(room).broadcast.emit('user-disconnected', rooms[room].users[socket.id]);
             delete rooms[room].users[socket.id];
+            console.log(rooms[room].users);
+            if(Object.keys(rooms[room].users).length === 0){
+                console.log("Inside");
+                delete rooms[room];
+            }
         });      
     });
 });
